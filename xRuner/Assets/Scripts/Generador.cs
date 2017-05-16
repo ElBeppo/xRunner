@@ -18,6 +18,10 @@ public class Generador : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//Generar ();
+		NotificationCenter.DefaultCenter().AddObserver(this,"PersonajeEmpiezaACorrer");
+	}
+	void PersonajeEmpiezaACorrer(Notification notificacion){
 		Generar ();
 	}
 	
