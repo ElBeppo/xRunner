@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Destructor : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -16,9 +17,10 @@ public class Destructor : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D colision){
 		if (colision.tag == "Player") {
-			Debug.Break ();
-
-		} else {	
+            NotificationCenter.DefaultCenter().PostNotification(this, "PersonajeHaMuerto");
+            GameObject Personaje = GameObject.Find("Jugador");
+            Personaje.SetActive(false);
+        } else {	
 			Destroy (colision.gameObject);
 		}
 	}

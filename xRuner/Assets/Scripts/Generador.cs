@@ -11,6 +11,7 @@ public class Generador : MonoBehaviour {
 	private int zein;
 	public float tiempoMin = 1f;
 	public float tiempoMax = 2f;
+    private bool fin = false;
 	//public Vector3 cosas;
 
 
@@ -20,8 +21,15 @@ public class Generador : MonoBehaviour {
 	void Start () {
 		//Generar ();
 		NotificationCenter.DefaultCenter().AddObserver(this,"PersonajeEmpiezaACorrer");
-	}
-	void PersonajeEmpiezaACorrer(Notification notificacion){
+        NotificationCenter.DefaultCenter().AddObserver(this, "PersonajeHaMuerto");
+
+    }
+
+    void PersonajeHaMuerto()
+    {
+        fin = true;
+    }
+    void PersonajeEmpiezaACorrer(Notification notificacion){
 		Generar ();
 	}
 	
@@ -31,11 +39,15 @@ public class Generador : MonoBehaviour {
 	}
 
 	void Generar(){
-		
-		//zein = Random.Range (0, 3);
-		//cosas.y = pos[zein];
-		Instantiate (obj [Random.Range (0, obj.Length)], transform.position , Quaternion.identity);
-		Invoke ("Generar", Random.Range (tiempoMin, tiempoMax));
+
+
+        //zein = Random.Range (0, 3);
+        //cosas.y = pos[zein];
+        if (!fin)
+        {
+            Instantiate(obj[Random.Range(0, obj.Length)], transform.position, Quaternion.identity);
+            Invoke("Generar", Random.Range(tiempoMin, tiempoMax));
+        }
 
 	}
 }

@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\Item.cs" />
     <Compile Include="Assets\Scripts\NotificationCenter.cs" />
     <Compile Include="Assets\Scripts\Puntuacion.cs" />
+    <Compile Include="Assets\Scripts\Scroll.cs" />
     <Compile Include="Assets\Scripts\SeguirPersonaje.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
