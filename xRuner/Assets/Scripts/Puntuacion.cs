@@ -10,8 +10,20 @@ public class Puntuacion : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		NotificationCenter.DefaultCenter ().AddObserver (this, "IncrementarPuntos");
+		NotificationCenter.DefaultCenter ().AddObserver (this, "PersonajeHaMuerto");
+
         ActualizarMarcador();
     }
+	void PersonajeHaMuerto(Notification notificacion){
+		if (puntuacion > EstadoJuego.estadoJuego.puntuacionMaxima) {
+			EstadoJuego.estadoJuego.puntuacionMaxima = puntuacion;
+			Debug.Log ("Puntuacion max. Superada! Nueva: " + EstadoJuego.estadoJuego.puntuacionMaxima);
+			EstadoJuego.estadoJuego.Guardar ();
+		} else {
+			Debug.Log ("Puntuacion max. NO SUPERADA!! Maxima: " + EstadoJuego.estadoJuego.puntuacionMaxima);
+
+		}
+	}
 
 	void IncrementarPuntos(Notification notificacion){
 		int puntosAIncrementar = (int)notificacion.data;
