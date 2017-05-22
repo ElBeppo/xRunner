@@ -5,6 +5,7 @@ using UnityEngine;
 public class ActivarGameOver : MonoBehaviour {
 
     public GameObject camaraGameOver;
+    public AudioClip gameOverSound;
 
 	// Use this for initialization
 	void Start () {
@@ -16,6 +17,10 @@ public class ActivarGameOver : MonoBehaviour {
 
     void PersonajeHaMuerto(Notification notificacion)
     {
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().clip = gameOverSound;
+        GetComponent<AudioSource>().loop = false;
+        GetComponent<AudioSource>().Play();
         camaraGameOver.SetActive(true);
     }
 

@@ -5,6 +5,8 @@ using UnityEngine;
 public class Item : MonoBehaviour {
 
     public int puntosGanados = 5;
+    public AudioClip itemSound;
+    public float itemSoundVolume=1f;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +22,7 @@ public class Item : MonoBehaviour {
         if(collider.tag=="Player")
         {
             NotificationCenter.DefaultCenter().PostNotification(this, "IncrementarPuntos", puntosGanados);
+            AudioSource.PlayClipAtPoint(itemSound, Camera.main.transform.position, itemSoundVolume);
         }
         
         Destroy(gameObject);
