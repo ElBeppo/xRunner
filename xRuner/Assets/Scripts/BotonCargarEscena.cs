@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BotonJugar : MonoBehaviour {
+public class BotonCargarEscena : MonoBehaviour {
 
+	public string nombreEscenaParaCargar =  "GameScene";
 	// Use this for initialization
 	void Start () {
 		
@@ -25,7 +26,7 @@ public class BotonJugar : MonoBehaviour {
     }
     void CargarNivelJuego()
     {
-        SceneManager.LoadScene("GameScene");
+		SceneManager.LoadScene(nombreEscenaParaCargar);
     }
 
 }
