@@ -5,12 +5,13 @@ using UnityEngine;
 public class Generador : MonoBehaviour {
 
 	public GameObject[] obj;
+    public Transform[] position;
 
 
-	//public float[] pos= new float[3] {-3.39f,-0.46f,1.755685f};
+    public float[] pos= new float[3] {-3.39f,-0.46f,2f};
 	private int zein;
-	public float tiempoMin = 1f;
-	public float tiempoMax = 2f;
+	public float tiempoMin = 0.5f;
+	public float tiempoMax = 1.5f;
     private bool fin = false;
 	//public Vector3 cosas;
 
@@ -41,11 +42,12 @@ public class Generador : MonoBehaviour {
 	void Generar(){
 
 
-        //zein = Random.Range (0, 3);
+        zein = Random.Range (0, 3);
         //cosas.y = pos[zein];
         if (!fin)
         {
-            Instantiate(obj[Random.Range(0, obj.Length)], transform.position, Quaternion.identity);
+            Vector3 positionaltura = new Vector3(transform.position.x, pos[zein], 0);
+            Instantiate(obj[Random.Range(0, obj.Length)], positionaltura, Quaternion.identity);
             Invoke("Generar", Random.Range(tiempoMin, tiempoMax));
         }
 
